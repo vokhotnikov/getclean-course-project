@@ -20,6 +20,9 @@ The `run_analysis.R` contains script to clean the data as the course project tas
 requests. At the top of the script there are helper functions, in the bottom is 
 the `extractTidyData` function containing the top-level extraction steps.
 
+The tidy output is written to `step4.txt` and `step5.txt` files in the `tidy` 
+directory which is created by the script if needed.
+
 As requested, the script does the following:
 
 1.  Merges the training and the test sets to create one data set.

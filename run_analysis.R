@@ -41,7 +41,10 @@ extractTidyData <- function() {
     # Step 2 - extract means and std. dev. on each measurement
     matchingFeatures <- grepl("-mean()", features[,2], fixed = TRUE) |
         grepl("-std()", features[,2], fixed = TRUE)
-    featureIndices <- features[matchingFeatures, 1]
+    featureIndices <- features[matchingFeatures, "FeatureID"]
+
+    # safe feature names for step 4
+    featureNames = features[matchingFeatures, "Feature"]
     
     # shift by 2 since we glued columns for subject/activity ids
     featureIndices <- featureIndices + 2
@@ -49,13 +52,21 @@ extractTidyData <- function() {
     # subset required features and subject/activity ids
     ds <- d[,c(1, 2, featureIndices)]
     
-    # Step 3 - Uses descriptive activity names to name the activities in the data set
+    # Step 3 - use descriptive activity names to name the activities
     ds <- merge(activities, ds, by = "ActivityID",
                 all.x = FALSE, all.y = TRUE)
     
     # filter out ActivityId and rearrange columns
     ds <- ds[2:ncol(ds)]
     
+    # Step 4 - appropriately labels the data set with descriptive variable names 
+    colnames(ds) <- c("Activity", "Subject", featureNames)
+    
+    # write out step 4 result to a file
+    if (!file.exists("tidy")) {
+        dir.create("tidy")
+    }
+    write.table(ds, "tidy/step4.txt", row.name = FALSE)
     
     ds
 }
