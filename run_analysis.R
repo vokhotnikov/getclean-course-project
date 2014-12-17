@@ -49,6 +49,14 @@ extractTidyData <- function() {
     # subset required features and subject/activity ids
     ds <- d[,c(1, 2, featureIndices)]
     
+    # Step 3 - Uses descriptive activity names to name the activities in the data set
+    ds <- merge(activities, ds, by = "ActivityID",
+                all.x = FALSE, all.y = TRUE)
+    
+    # filter out ActivityId and rearrange columns
+    ds <- ds[2:ncol(ds)]
+    
+    
     ds
 }
 
