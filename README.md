@@ -36,9 +36,14 @@ As requested, the script does the following:
     it can be done by changing the single statement that calculates
     `matchingFeatures` value in the `extractTidyData` function.
     
-1. Uses descriptive activity names to name the activities in the data set
+1.  Uses descriptive activity names (from the `activity_labels.txt` file 
+    to name the activities in the data set)
 
-1. Appropriately labels the data set with descriptive variable names. 
-1. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-
-
+1.  Appropriately labels the data set with descriptive variable names (from 
+    the `features.txt` file)
+    
+1.  From the data set in step 4, creates a second, independent tidy data set 
+    with the average of each variable for each activity and each subject.
+    The id columns are `Activity` and `Subject` in that order, since it is more
+    likely that one can be interested in variations of the variables over
+    subjects in a particular activity.

@@ -3,6 +3,10 @@
 ###
 ### It assumes the source data is downloaded and unzipped as the 
 ### "UCI HAR Dataset" directory next to the script file
+###
+### Results are saved into "tidy" directory (created if does not exist)
+
+library(reshape2)
 
 # helper function to add path prefix and extension to a raw file name (or path portion)
 rawFile <- function(name) {
@@ -68,7 +72,17 @@ extractTidyData <- function() {
     }
     write.table(ds, "tidy/step4.txt", row.name = FALSE)
     
-    ds
+    # Step 5 - create independent data set with averages of each variable for
+    # each activity and subject
+    
+    # use melt + cast to reshape ds intp aggregated form
+    melted <- melt(ds, id = c ("Activity", "Subject"))
+    ds2 <- dcast(melted, Activity+Subject~variable, mean, na.rm = TRUE)
+    
+    # write out step 5 result to a file
+    write.table(ds2, "tidy/step5.txt", row.name = FALSE)
+    
+    ds2
 }
 
 # extractTidyData()
