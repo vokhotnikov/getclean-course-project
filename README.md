@@ -1,16 +1,9 @@
----
-title: "README"
-author: "Vladimir Okhotnikov"
-date: "17 декабря 2014"
-output: html_document
----
-
 This is my course project for the "Getting and Cleaning Data" course on Coursera.
 
 The raw data is not included in the git repository. It is assumed that the data
 file can be downloaded from 
 
-[https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip]
+[https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
 
 and the resulting file unzipped next to the `run_analysis.R` script. You should 
 have the `UCI HAR Dataset` directory in the same folder as the sciript (and 
