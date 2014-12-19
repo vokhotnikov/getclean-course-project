@@ -52,8 +52,9 @@ factor with 6 levels:
 The `Subject` columns identifies a particular subject performing the activity. 
 It is an integer between 1 and 30 (inclusive).
 
-The remaining columns represent mean and standard deviation values summarized by 
-subject and activity. All values are normalized and bounded within [-1;1].
+The remaining columns represent mean and standard deviation values averaged by 
+key pair of `Subject` and `Activity`. All values are normalized and bounded 
+within [-1;1].
 
 
 ```
