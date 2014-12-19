@@ -38,7 +38,6 @@ extractTidyData <- function() {
                            col.names = c("FeatureID", "Feature"),
                            stringsAsFactors = FALSE)
     
-
     # Step 1 - load and merge training and test data sets
     d <- rbind(loadRawDataset("train"), loadRawDataset("test"))
     
@@ -46,8 +45,11 @@ extractTidyData <- function() {
     matchingFeatures <- grepl("-mean()", features[,2], fixed = TRUE) |
         grepl("-std()", features[,2], fixed = TRUE)
     featureIndices <- features[matchingFeatures, "FeatureID"]
+    
+    # sanitize feature names to avoid unsafe characters
+    features$Feature <- gsub("[^A-Za-z0-9]+", ".", features$Feature)
 
-    # safe feature names for step 4
+    # save feature names for step 4
     featureNames = features[matchingFeatures, "Feature"]
     
     # shift by 2 since we glued columns for subject/activity ids
