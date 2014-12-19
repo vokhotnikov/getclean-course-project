@@ -1,0 +1,25 @@
+---
+title: "Codebook.md"
+author: "Vladimir Okhotnikov"
+date: "19 December 2014"
+output:
+  html_document:
+    keep_md: yes
+---
+
+```{r, echo = FALSE}
+d <- read.table("tidy/step5.txt", header = TRUE)
+```
+
+The `Activity` column describes the activity performed by the subject. It is a 
+factor with `r length(levels(d$Activity))` levels: 
+```{r, echo = FALSE}
+levels(d$Activity)
+```
+
+The `Subject` columns identifies a particular subject performing the activity. 
+It is an integer between 1 and 30 (inclusive).
+
+```{r, echo=FALSE}
+data.frame(var = colnames(d)[3:ncol(d)])
+```
