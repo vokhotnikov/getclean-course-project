@@ -47,7 +47,7 @@ extractTidyData <- function() {
     featureIndices <- features[matchingFeatures, "FeatureID"]
     
     # sanitize feature names to avoid unsafe characters
-    features$Feature <- gsub("[^A-Za-z0-9]+", ".", features$Feature)
+    features$Feature <- gsub("\\.+$", "", gsub("[^A-Za-z0-9]+", ".", features$Feature))
 
     # save feature names for step 4
     featureNames = features[matchingFeatures, "Feature"]
