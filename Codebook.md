@@ -28,6 +28,12 @@ as the README file of the raw data describes the process of capturing it:
 > a vector of features was obtained by calculating variables from the time 
 > and frequency domain.
 
+The raw data also provided jerk and magnitude variables:
+
+> Subsequently, the body linear acceleration and angular velocity were derived 
+> in time to obtain Jerk signals... Also the magnitude of these 
+> three-dimensional signals were calculated using the Euclidean norm 
+
 The resulting tidy data includes only mean value and standard deviation pairs 
 for each variable, summarized by activity and subject pair. Variable names
 have been sanitized to avoid unsave characters (like parentheses) and obvious
